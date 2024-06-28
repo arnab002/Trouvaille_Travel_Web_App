@@ -37,7 +37,7 @@ async function connect() {
 }
 
 const corsOptions = {
-  origin: true,
+  origin: 'https://trouvaille-travel-tourism-web-app.vercel.app',
   credentials: true,
 };
 
