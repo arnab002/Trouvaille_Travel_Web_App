@@ -21,8 +21,6 @@ app.get('/', (req, res) => {
   res.send('Hello, world!');
 });
 
-mongoose.set("strictQuery", false);
-
 async function connect() {
   try {
     await mongoose.connect(process.env.MONGO_URI);
