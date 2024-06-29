@@ -21,10 +21,20 @@ app.get('/', (req, res) => {
   res.send('Hello, world!');
 });
 
-await mongoose.connect(process.env.MONGODB_URI)
-  .then(() => {
-    console.log("Database Connected Successfully.");
-})
+mongoose.set("strictQuery", false);
+
+async function connect() {
+  try {
+    await mongoose.connect(process.env.MONGO_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+
+    console.log("MongoDB Database Connected");
+  } catch (err) {
+    console.log("MongoDB Database Connection Failed");
+  }
+}
 
 const corsOptions = {
   origin: "https://trouvaille-travel-tourism-web-app.vercel.app",
@@ -47,5 +57,6 @@ app.use("/api/v1/blogs", blogRoute);
 app.use("/api/v1/comment", commentRoute);
 
 app.listen(port, () => {
+  connect();
   console.log("Server is listening on port", port);
 });
