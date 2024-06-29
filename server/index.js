@@ -37,14 +37,14 @@ async function connect() {
 }
 
 const corsOptions = {
-  origin: "https://trouvaille-travel-tourism-web-app.vercel.app",
+  origin: "*",
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true,
 };
 
 app.use(express.json());
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(cookieParser());
 app.use("/api/v1/auth", authRoute);
 app.use("/api/v1/tours", tourRoute);
