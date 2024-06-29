@@ -32,7 +32,7 @@ async function connect() {
 }
 
 const corsOptions = {
-  origin: "*",
+  origin: "https://trouvaille-travel-tourism-web-app.vercel.app",
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true,
